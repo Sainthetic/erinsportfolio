@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erin Buena's Project Dex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-loading day-mode">
+    <div class="startup-screen" id="startupScreen" aria-label="Project Dex loading screen">
+        <div class="startup-day-background" id="startupDayBackground" aria-hidden="true"></div>
+        <div class="startup-particles" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="startup-panel">
+            <p class="startup-kicker">ERIN BUENA'S</p>
+            <h1>PROJECT DEX</h1>
+
+            <div class="startup-ball" aria-hidden="true">
+                <span></span>
+            </div>
+
+            <p class="loading-text" id="loadingText">LOADING...</p>
+            <div class="loading-track" aria-hidden="true">
+                <span id="loadingBar"></span>
+            </div>
+
+            <button class="start-button" id="startButton" type="button" disabled>
+                ENTER PROJECT DEX
+            </button>
+        </div>
+    </div>
+
+    <div class="environment" aria-hidden="true">
+        <div class="background-set background-day is-active" id="dayBackground"></div>
+        <div class="background-set background-night" id="nightBackground"></div>
+        <div class="atmosphere"></div>
+        <div class="pokemon-field" id="pokemonField"></div>
+        <div class="leaf-field">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="firefly-field" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <a class="logo" href="#home" aria-label="Erin Buena's Project Dex home">
+            <span class="dex-light"></span>
+            SAINTHETIC
+        </a>
+
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#trainer" id="trainerNavLink">TRAINER</a>
+            <a href="#projects">PROJECT DEX</a>
+        </div>
+
+        <div class="site-controls">
+            <button class="control-button" id="modeToggle" type="button">DAY MODE</button>
+            <button class="control-button" id="musicToggle" type="button">MUSIC OFF</button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="welcome">WELCOME, TRAINER</p>
+                <h1>ERIN BUENA'S<br>PROJECT DEX</h1>
+                <p class="subtitle">Computer Engineering Student</p>
+
+                <button class="primary-button" type="button" onclick="enterDex()">
+                    ENTER PROJECT DEX
+                </button>
+            </div>
+
+            <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+        </section>
+
+        <section id="trainer" class="trainer reveal-section">
+            <p class="section-label">TRAINER</p>
+            <h2>Trainer Card</h2>
+
+            <button class="trainer-card" id="openTrainerProfile" type="button">
+                <span class="trainer-image-frame">
+                    <img src="assets/trainer/ASH KETCHUM.webp" alt="Trainer portrait placeholder">
+                </span>
+
+                <span class="trainer-card-info">
+                    <span class="profile-id">ID NO. 0307-CPE</span>
+                    <strong>Erin Buena</strong>
+                    <span>Computer Engineering Student</span>
+                    <span class="view-profile">VIEW PROFILE</span>
+                </span>
+            </button>
+        </section>
+
+        <section id="projects" class="projects reveal-section">
+            <p class="section-label">PROJECT DATABASE</p>
+            <h2>Project Dex</h2>
+            <p class="description-center">Select an entry to scan the project details.</p>
+
+            <div class="project-grid" id="projectGrid"></div>
+        </section>
+    </main>
+
+    <div class="trainer-modal" id="trainerModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-trainer></div>
+        <article class="trainer-profile-panel" role="dialog" aria-modal="true" aria-labelledby="trainerProfileTitle">
+            <button class="modal-close" type="button" aria-label="Close trainer profile" data-close-trainer>
+                X
+            </button>
+
+            <div class="trainer-profile-layout">
+                <div class="trainer-profile-image">
+                    <img src="assets/trainer/ASH KETCHUM.webp" alt="Trainer profile placeholder">
+                </div>
+
+                <div class="trainer-profile-content">
+                    <p class="modal-label">TRAINER PROFILE</p>
+                    <h2 id="trainerProfileTitle">Erin Buena</h2>
+
+                    <div class="trainer-details">
+                        <p><strong>TRAINER LEVEL:</strong> 19</p>
+                        <p><strong>BIRTHDAY:</strong> October 5, 2006</p>
+                        <p><strong>COURSE:</strong> BS Computer Engineering</p>
+                        <p><strong>YEAR:</strong> 3rd Year</p>
+                    </div>
+
+                    <section class="profile-block">
+                        <h3>About Me</h3>
+                        <p>
+                            Hi, I'm Erin. I'm a 3rd year Computer Engineering student who enjoys building
+                            practical systems, learning through projects, and improving one step at a time.
+                        </p>
+                    </section>
+
+                    <section class="profile-block">
+                        <h3>Trainer Skills</h3>
+                        <div class="trainer-skills" id="trainerSkills"></div>
+                    </section>
+
+                    <section class="profile-block profile-columns">
+                        <div>
+                            <h3>Technologies</h3>
+                            <p>Java, Python, HTML, CSS, JavaScript, and system design basics.</p>
+                        </div>
+                        <div>
+                            <h3>Hobbies</h3>
+                            <p>Playing sports, playing instruments, and going to new places.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-project></div>
+        <article class="pokedex-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" type="button" aria-label="Close Pokedex entry" data-close-project>
+                X
+            </button>
+
+            <div class="dex-screen">
+                <div class="scan-line"></div>
+                <p class="modal-label" id="modalNumber">POKEDEX ENTRY #000</p>
+                <div class="dex-entry-image" id="modalImage"></div>
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="entry-facts" id="modalFacts"></div>
+                <div class="entry-section" id="modalDescription"></div>
+                <div class="entry-section" id="modalFeatures"></div>
+                <div class="entry-section" id="modalLessons"></div>
+                <a class="github-button" id="githubButton" href="#" target="_blank" rel="noopener noreferrer">
+                    VIEW ON GITHUB
+                </a>
+                <button class="copy-link-button" id="copyLinkButton" type="button" hidden>
+                    COPY GITHUB LINK
+                </button>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>Erin Buena's Project Dex</p>
+        <small>Copyright 2026</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
